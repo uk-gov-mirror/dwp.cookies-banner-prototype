@@ -19,7 +19,7 @@ function initializeAnalytics() {
 			dataLayer.push(arguments)
 		}
 		gtag('js', new Date())
-		gtag('config', 'UA-29011943-12')
+		gtag('config', 'UA-XXXXXXXX-XX')
 	}
 }
 
@@ -50,11 +50,13 @@ function processCookiesToggle() {
 function saveCookieChoice(allow) {
 	window.localStorage.setItem('acceptAllCookies', allow)
 	window.localStorage.setItem('seenCookieBanner', true)
+	var $cookieBanner = $('.casa-cookie-banner')
 	if (!allow) {
 		deleteAllCookies()
+		$cookieBanner.addClass('casa-cookie-banner-show-reject')
+	} else {
+		$cookieBanner.addClass('casa-cookie-banner-show-accept')
 	}
-	var $cookieBanner = $('.casa-cookie-banner')
-	$cookieBanner.slideUp('fast')
 	processCookiesToggle()
 	initializeAnalytics()
 }
@@ -67,11 +69,16 @@ function processCookieBanner() {
 	var $cookieBanner = $('.casa-cookie-banner')
 	if (!(seenCookieBanner == 'true')) {
 		$('body').prepend($cookieBanner)
-		$cookieBanner.css('display', 'flex')
+		$cookieBanner.css('display', 'block')
 	} else {
 		$cookieBanner.remove()
 	}
 	processCookiesToggle()
+}
+
+function hideCookieBanner() {
+	var $cookieBanner = $('.casa-cookie-banner')
+	$cookieBanner.remove()
 }
 
 processCookieBanner()

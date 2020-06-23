@@ -62,4 +62,32 @@ $govuk-assets-path: '/govuk/assets/';
 	}
 }
 
+.casa-cookie-banner {
+	.casa-cookie-banner--accept {
+		display: none;
+	}
+	.casa-cookie-banner--reject {
+		display: none;
+	}
+}
+
+.casa-cookie-banner.casa-cookie-banner-show-accept,
+.casa-cookie-banner.casa-cookie-banner-show-reject {
+	.casa-cookie-banner--main {
+		display: none;
+	}
+}
+
+.casa-cookie-banner.casa-cookie-banner-show-accept {
+	.casa-cookie-banner--accept {
+		display: block;
+	}
+}
+
+.casa-cookie-banner.casa-cookie-banner-show-reject {
+	.casa-cookie-banner--reject {
+		display: block;
+	}
+}
+
 // COOKIE BANNER END
